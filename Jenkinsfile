@@ -10,5 +10,11 @@ pipeline {
                 echo '======================================'
             }
         }
+
+        stage('Run Python') {
+            steps {
+                sh 'python3 src/hello.py'
+            }
+        }
     }
 }
