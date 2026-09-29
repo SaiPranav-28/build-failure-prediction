@@ -14,9 +14,12 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    python3 -m venv .jenkins_venv
-                    .jenkins_venv/bin/pip install --upgrade pip
-                    .jenkins_venv/bin/pip install -r requirements.txt
+                    PYTHON=/opt/homebrew/opt/python@3.14/bin/python3.14
+
+                    $PYTHON -m venv .jenkins_venv
+                    .jenkins_venv/bin/python --version
+                    .jenkins_venv/bin/python -m pip install --upgrade pip
+                    .jenkins_venv/bin/python -m pip install -r requirements.txt
                 '''
             }
         }
